@@ -1,0 +1,6 @@
+OPENBIOS=openbios+svn1047
+OPENBIOS_SRC=$DIST_DIR/src/$OPENBIOS.tar.gz
+OPENBIOS_PATCHES=" \
+$DIST_DIR/patches/openbios/openbios-sparc-switch-arch.patch \
+"
+OPENBIOS_ARCH="sparc32"

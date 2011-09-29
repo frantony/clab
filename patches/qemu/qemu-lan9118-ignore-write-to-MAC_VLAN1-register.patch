@@ -1,0 +1,29 @@
+From: 	Atsushi Nemoto
+Subject: 	[Qemu-devel] [PATCH] lan9118: Ignore write to MAC_VLAN1 register
+Date: 	Tue, 29 Mar 2011 22:41:12 +0900
+
+Since kernel 2.6.38, smsc911x driver writes to VLAN1 registger.
+
+Signed-off-by: Atsushi Nemoto <address@hidden>
+---
+ hw/lan9118.c |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/hw/lan9118.c b/hw/lan9118.c
+index af6949f..62aead3 100644
+--- hw/lan9118.c
++++ hw/lan9118.c
+@@ -785,6 +785,8 @@ static void do_mac_write(lan9118_state *s, int reg, uint32_t val)
+     case MAC_FLOW:
+         s->mac_flow = val & 0xffff0000;
+         break;
++    case MAC_VLAN1:
++        break; /* just ignore */
+     default:
+         hw_error("lan9118: Unimplemented MAC register write: %d = 0x%x\n",
+                  s->mac_cmd & 0xf, val);
+-- 
+1.5.6.5
+
+
+

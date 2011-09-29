@@ -1,0 +1,10 @@
+= openssh -> dropbear =
+ssh-keygen -C "clab" -t rsa -N '' -f rsa_key
+mv rsa_key rsa_key.openssh
+dropbearconvert openssh dropbear rsa_key.openssh rsa_key.dropbear
+chmod 400 rsa_key.openssh
+
+= dropbear -> openssh =
+dropbearkey -t rsa -f rsa_key.dropbear
+dropbearkey -y -f rsa_key.dropbear | grep "^ssh-rsa " > rsa_key.pub
+dropbearconvert dropbear openssh rsa_key.dropbear rsa_key.openssh

@@ -1,0 +1,10 @@
+--- Makefile.in	2011-02-19 12:01:52.000000000 +0300
++++ Makefile.in	2011-02-19 12:01:46.000000000 +0300
+@@ -104,6 +104,7 @@
+ # for the scp progress meter. The -D doesn't affect anything else.
+ ifeq ($(SCPPROGRESS), 1)
+ 	CFLAGS+=-DPROGRESS_METER
++	SCPOBJS+=compat.o
+ endif
+ 
+ #%: $(HEADERS)

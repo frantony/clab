@@ -1,0 +1,48 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+
+VENDOR=ss20
+PREFIX=/opt/clab/$VENDOR
+TC_CFG=sparc-$VENDOR-linux-gnu
+TC_PREFIX=$PREFIX/bin/$TC_CFG-
+
+QEMU_SYSTEM_ARCH="sparc"
+
+QEMU=$PREFIX/bin/qemu-system-sparc
+
+QEMU_START_MODE="x-terminal"
+
+QEMU_MACH=SS-20
+QEMU_CPU=""
+QEMU_MEMSIZE=256
+
+# Avialable ethernet devices:
+#   ne2k_pci,i82551,i82557b,i82559er,rtl8139,e1000,pcnet,virtio
+
+# MD00048: board has AMD Am79C973 (1022:2625) ethernet controller
+# but qemu supports PCnet/PCI II 79C970A (1022:2000)
+QEMU_NET0_CMD="-net nic,vlan=0,model=pcnet -net tap,vlan=0,script=$QEMU_AUX/net_10.3.0.1.sh"
+
+# Realtek works fine
+#QEMU_NET1_CMD="-net nic,model=rtl8139"
+
+# e1000 does not work!
+#QEMU_NET2_CMD="-net nic,model=e1000"
+
+QEMU_BIOS=openbios-sparc32
+QEMU_BIOS_PATH=$QEMU_BASE_DIR/out/$VENDOR
+
+KERNEL_SUFFIX=linux-2.6.38.4.$TC_CFG
+KERNEL_SUFFIX=linux-3.0.$TC_CFG
+KERNEL_CMD="-kernel $QEMU_BASE_DIR/out/$VENDOR/zImage.$KERNEL_SUFFIX"
+                                      
+INITRD_CMD="-initrd $QEMU_BASE_DIR/out/$VENDOR/$VENDOR-rootfs.$TC_CFG/squashfs.img"
+
+initarg="init=/bin/sh"
+initarg="init=/sbin/init"
+APPEND_CMD="-append \"console=ttyS0 $initarg\""
+DISK_IMAGE=""

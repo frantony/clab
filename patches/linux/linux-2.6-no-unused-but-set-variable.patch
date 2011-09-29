@@ -1,0 +1,11 @@
+--- Makefile.orig	2011-05-17 00:17:23.000000000 +0400
++++ Makefile	2011-05-17 00:18:30.000000000 +0400
+@@ -555,6 +555,8 @@
+ KBUILD_CFLAGS += $(call cc-option, -fno-stack-protector)
+ endif
+ 
++KBUILD_CFLAGS += $(call cc-option, -Wno-unused-but-set-variable)
++
+ ifdef CONFIG_FRAME_POINTER
+ KBUILD_CFLAGS	+= -fno-omit-frame-pointer -fno-optimize-sibling-calls
+ else

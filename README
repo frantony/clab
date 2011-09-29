@@ -1,0 +1,15 @@
+clab: scripts for cross development
+(c) 2011, Antony Pavlov
+
+clab is a set of scripts, patches and configuration files
+to deploy tools for cross-platform software development.
+
+clab contains the scripts for many purposes
+  * configure crosstool-ng to build and install toolchain;
+  * configure, build and install qemu system emulator;
+  * build nessesary firmware (openbios, seabios, barebox);
+  * build linux kernel;
+  * build and compose busybox-based root filesystem;
+  * run built linux under qemu.
+
+Read HOWTO for instructions.

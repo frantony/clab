@@ -1,0 +1,7 @@
+# -net nic,model=ne2k_pci :::   10ec:8029 (rev 00)
+# -net nic,model=i82551   :::   8086:1209 (rev 0f)
+# -net nic,model=i82557b  :::   8086:1229 (rev 02)
+# -net nic,model=i82559er :::   8086:1209 (rev 09)
+# -net nic,model=e1000    :::   8086:100e (rev 03)
+# -net nic,model=rtl8139  :::   10ec:8139 (rev 20)
+# -net nic,model=pcnet    :::   1022:2000 (rev 10)

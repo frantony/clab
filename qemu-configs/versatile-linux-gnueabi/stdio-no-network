@@ -1,0 +1,13 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+. $LOCAL_PREFIX/default
+
+QEMU_START_MODE="stdio"
+
+QEMU_NET0_CMD=""
+QEMU_NET1_CMD=""
+QEMU_NET2_CMD=""

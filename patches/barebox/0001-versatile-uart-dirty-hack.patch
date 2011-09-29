@@ -1,0 +1,32 @@
+From 218a6f0ac7c69407c8ed7b41136939ba5a8dc2bb Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Tue, 9 Aug 2011 12:12:39 +0400
+Subject: [PATCH] versatile uart dirty hack
+
+---
+ arch/arm/mach-versatile/core.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm/mach-versatile/core.c b/arch/arm/mach-versatile/core.c
+index 28582f7..30f5413 100644
+--- a/arch/arm/mach-versatile/core.c
++++ b/arch/arm/mach-versatile/core.c
+@@ -152,6 +152,7 @@ void versatile_register_uart(unsigned id)
+ 	switch (id) {
+ 	case 0:
+ 		start = VERSATILE_UART0_BASE;
++		vpb_clk_create(&ref_clk_24, "uart-pl0110");
+ 		break;
+ 	case 1:
+ 		start = VERSATILE_UART1_BASE;
+@@ -167,7 +168,6 @@ void versatile_register_uart(unsigned id)
+ 	}
+ 	dev = add_generic_device("uart-pl011", id, NULL, start, 4096,
+ 			   IORESOURCE_MEM, NULL);
+-	vpb_clk_create(&ref_clk_24, dev_name(dev));
+ }
+ 
+ void __noreturn reset_cpu (unsigned long ignored)
+-- 
+1.7.5.4
+

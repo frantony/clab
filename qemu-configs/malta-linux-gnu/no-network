@@ -1,0 +1,10 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+# qemu configuration for mips malta board without network.
+#
+
+QEMU_NET0_CMD=""
+QEMU_NET1_CMD=""
+QEMU_NET2_CMD=""

@@ -1,0 +1,16 @@
+VENDOR=malta
+BAREBOX=barebox-2011.08.0-next
+BAREBOX_CONFIG=$(dirname $BAREBOX_BUILD_CFG)/$BAREBOX-$VENDOR.config
+BAREBOX_CONFIG=$(dirname $BAREBOX_BUILD_CFG)/$BAREBOX-$VENDOR-pci.config
+BAREBOX_SRC=$DIST_DIR/src/$BAREBOX.tar.bz2
+PATCH_DIR=$DIST_DIR/patches/barebox
+BAREBOX_PATCHES=" \
+$PATCH_DIR/malta-pci/0001-PCI-initial-commit-draft.patch
+$PATCH_DIR/malta-pci/0002-MIPS-add-file-gt64120.h-from-linux-2.6.39.patch
+$PATCH_DIR/malta-pci/0003-MIPS-add-PCI-support-for-GT64120-based-malta.patch
+$PATCH_DIR/malta-pci/0004-PCI-add-draft-lspci-command.patch
+$PATCH_DIR/malta-pci/0005-net-add-Realtek-8139-Ethernet-controller-support.patch
+"
+BUILD_DIR=$TMP_DIR/$VENDOR-build-barebox
+
+BAREBOX_ARCH=mips

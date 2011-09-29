@@ -1,0 +1,22 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+# qemu configuration for mips malta board with network and
+# with serial console in xterm, debugger enabled.
+#
+
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+. $LOCAL_PREFIX/default
+
+#
+# GDB
+#
+GDB_UI="--tui"
+GDB_UI=""
+GDB_QUIET="-quiet"
+GDB="${TC_PREFIX}gdb $GDB_UI $GDB_QUIET"
+GDB_SYM_FILE="$QEMU_BASE_DIR/$VENDOR-out/vmlinux.$KERNEL_SUFFIX"
+GDB_X_CMD=""
+
+QEMU_GDB_CMD="-S -gdb tcp::1234"

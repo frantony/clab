@@ -1,0 +1,140 @@
+= clab usage HOWTO =
+== INTRODUCTION ==
+
+clab is a set of scripts, patches and configuration files
+to deploy tools for cross software development.
+
+clab support four different virtual boards (the targets):
+ * MIPS Malta;
+ * ARM Versatile;
+ * x86 PC;
+ * SPARC32 SparcStation-20. 
+
+For every board clab will make all nessesary development tools and
+linux, capable run gcc testsuit.
+
+This document provides step-by-step instructions for using clab.
+
+I have tested the scripts with debian-testing (x86 & x86_64)
+and x86_64 Fedora 14 (Laughlin). Fedora users must read the chapter in the end
+of this file.
+
+== SOFTWARE REQUIREMENTS ==
+
+Compiling the toolchain, the emulator (qemu), the kernel & the rootfs:
+ * you need bash to run scripts;
+ * you need wget to get some archives first time; but you can do this work other way;
+ * you need xsltproc to build openbios;
+ * you need xterm to run qemu serial console (optional);
+ * the toolchain & the emulator by default will be installed in /opt/clab/<vendor> directory,
+so make sure you have write-enabled /opt/clab directory and 300 MB of disk space per platform;
+ * build process use ~/tmp/ to store temporary files, so check,
+that you have free 3 GB of disk space there;
+ * you need mksquashfs to make rootfs image (Fedora squashfs-tools);
+ * compiled kernel & rootfs will be stored in clab-xx.yy/out/<vendor> (see below);
+ * you need root permissions to run qemu with tap-based network. Emulated malta board will have IP=10.3.0.2, and host computer will have IP=10.3.0.1.
+
+== BUILD: STEP BY STEP ==
+Obtain clab-xx.yy.tar, unpack it in you home directory
+
+ tar vfx clab-xx.yy.tar.gz
+
+Replace "xx" & "yy" with the version number of the latest clab.
+
+ cd clab-xx.yy
+
+Note: all commands bellow must be executed in clab-xx.yy!
+
+To use clab first time you must get some archives (source files for 
+crosstool-ng, qemu, busybox & dropbear). Use mk_src_dir.sh script to do it:
+
+./mk_src_dir.sh
+
+The script will create src subdirectory and will download all necessary files.
+Now you can build software
+
+ ./build-all.sh
+
+For every target this script will make the work:
+ * build & install static toolchain (thanks to crosstool-ng);
+ * build & install static qemu-system-mips;
+ * build linux kernel;
+ * build static busybox;
+ * build dropbear ssh server;
+ * combine roots (install small init script and rsa key).
+
+== RUNNING THE EMULATOR ==
+
+The easiest way to run the emulator and see mips linux run:
+
+ ./start-qemu.sh qemu-configs/out/malta/stdio-no-network
+
+Now, start the emulator with network support (you need root permissions
+to setup tap interface):
+
+ sudo ./start-qemu.sh qemu-configs/out/malta/stdio
+
+If tap interface successfully configured, then you can try ssh session.
+Install script put your public key ~/.ssh/id_rsa.pub (if one exists) to
+/.ssh/authorized_keys of malta rootfs, so there is no need to type
+password.
+
+ ssh root@10.3.0.2
+
+If you have no ~/.ssh/id_rsa.pub, you can try ready-to-use key
+(you use openssh-client, isn't it?):
+
+ ssh -i keys/rsa_key.openssh root@10.3.0.2
+
+There are other configurations for start-qemu.sh script
+in qemu-configs/out/malta/ directory. Some of them
+force start-qemu.sh script to use xterm for serial console
+interaction, so you need X11.
+
+== GCC TEST SUITE ==
+Toolchain mips-malta-linux-gnu is configured with gnu toolchain
+support. So you can run as the tests for cross-compiler on host,
+as the test on ssh-accessible MIPS computer (emulated malta board).
+You need expect and dejagnu to do this.
+
+Lets run test suite:
+
+ cd /opt/clab/malta/mips-malta-linux-gnu/test-suite/gcc
+
+ cat default.cfg
+DG_TOOLNAME = gcc
+DG_TARGET_HOSTNAME = 10.3.0.2
+DG_TARGET_USERNAME = root
+DG_C_TESTS = mips.exp
+DG_CPP_TESTS =
+
+ make
+
+wait ... and here it is:
+
+{{{
+=== gcc Summary ===
+
+# of expected passes            837
+}}}
+
+== Fedora ==
+=== static toolchain on Fedora 14 ===
+
+On Debian Linux library files for static and dynamic build combined
+in one package (e.g. libstdc++6-4.6-dev), but on Fedora
+you may need install addition libraries for static build, e.g.:
+ libstdc++-static
+ ncurses-static
+ zlib-static
+
+=== static qemu on Fedora 14 x86_64 ===
+
+It is difficult to build static qemu on Fedora 14 x86_64 because
+of http://bugs.gentoo.org/show_bug.cgi?id=353816 (sys-libs/glibc-2.13:
+static linking some apps breaks with missing memcpy_chk_ssse3 symbols).
+
+Edit build-configs/qemu/qemu-*/config, change
+  QEMU_STATIC="yes"
+to
+  QEMU_STATIC="no"

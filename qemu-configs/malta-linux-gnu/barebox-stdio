@@ -1,0 +1,13 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+# qemu configuration for mips clab pseudo-board with network and
+# with serial console in xterm. This configuration is used for
+# running 'hello world' example as firmware.
+#
+
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+. $LOCAL_PREFIX/barebox-default
+
+QEMU_START_MODE="stdio"

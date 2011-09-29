@@ -1,0 +1,5 @@
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+. $LOCAL_PREFIX/barebox-default
+. $LOCAL_PREFIX/no-network
+
+QEMU_START_MODE="stdio"

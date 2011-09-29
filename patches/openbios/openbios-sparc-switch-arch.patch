@@ -1,0 +1,22 @@
+diff --git a/config/scripts/switch-arch b/config/scripts/switch-arch
+index 087ec79..d704064 100755
+--- config/scripts/switch-arch
++++ config/scripts/switch-arch
+@@ -97,7 +97,7 @@ archname()
+ 
+ select_prefix()
+ {
+-    for TARGET in ${1}-linux-gnu- ${1}-linux- ${1}-elf- ${1}-eabi-
++    for TARGET in ${1} ${1}-linux-gnu- ${1}-linux- ${1}-elf- ${1}-eabi-
+     do
+         if type ${TARGET}gcc > /dev/null 2>&1
+         then
+@@ -247,7 +247,7 @@ for ARCH in $arch_list; do
+         ;;
+ 
+         sparc32)
+-        select_prefix sparc
++        select_prefix $CROSS_COMPILE
+         CFLAGS="-Wa,-xarch=v8 -Wa,-32 -m32 -mcpu=supersparc -fno-builtin"
+         AS_FLAGS="-Wa,-xarch=v8 -Wa,-32"
+         ;;

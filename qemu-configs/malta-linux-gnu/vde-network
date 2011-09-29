@@ -1,0 +1,15 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+# qemu configuration for mips malta board with network through VDE2.
+#
+
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+. $LOCAL_PREFIX/default
+
+#QEMU=qemu-system-mips
+
+QEMU_NET0_CMD="-net nic,vlan=0,model=pcnet -net vde,vlan=0"
+QEMU_NET1_CMD=""
+QEMU_NET2_CMD=""

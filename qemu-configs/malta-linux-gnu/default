@@ -1,0 +1,48 @@
+#
+# clab framework
+# (c) 2011, Antony Pavlov
+#
+# qemu configuration for mips malta board with network and
+# with serial console in xterm.
+#
+
+LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
+
+VENDOR=malta
+PREFIX=/opt/clab/$VENDOR
+PREFIX=/opt/$VENDOR
+TC_CFG=mips-$VENDOR-linux-gnu
+TC_PREFIX=$PREFIX/bin/$TC_CFG-
+
+QEMU_SYSTEM_ARCH="mips"
+
+QEMU=$PREFIX/bin/qemu-system-$QEMU_SYSTEM_ARCH
+
+QEMU_START_MODE="x-terminal"
+
+QEMU_MACH=malta
+QEMU_CPU=""
+QEMU_MEMSIZE=256
+
+# Avialable ethernet devices:
+#   ne2k_pci,i82551,i82557b,i82559er,rtl8139,e1000,pcnet,virtio
+
+# MD00048: board has AMD Am79C973 (1022:2625) ethernet controller
+# but qemu supports PCnet/PCI II 79C970A (1022:2000)
+QEMU_NET0_CMD="-net nic,vlan=0,model=pcnet -net tap,vlan=0,script=$QEMU_AUX/net_10.3.0.1.sh"
+
+# Realtek works fine
+#QEMU_NET1_CMD="-net nic,model=rtl8139"
+
+# e1000 does not work!
+#QEMU_NET2_CMD="-net nic,model=e1000"
+
+KERNEL_SUFFIX=linux-2.6.38.8.$TC_CFG
+KERNEL_CMD="-kernel $QEMU_BASE_DIR/out/$VENDOR/vmlinux.$KERNEL_SUFFIX"
+
+INITRD_CMD="-initrd $QEMU_BASE_DIR/out/$VENDOR/malta-rootfs.$TC_CFG/squashfs.img"
+
+initarg="init=/bin/sh"
+initarg="init=/sbin/init"
+APPEND_CMD="-append \"console=ttyS0 $initarg loglevel=10\""
+DISK_IMAGE=""

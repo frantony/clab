@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ARCH=arm
+VENDOR=versatile
+TC_CFG=$ARCH-$VENDOR-linux-gnueabi
+
+PREFIX=/opt/clab/$VENDOR
+CROSS_COMPILE=$PREFIX/bin/${TC_CFG}-
+BUILD_TOOLCHAIN_CONFIG=build-configs/toolchain/ct-ng-1.12.2-$TC_CFG/config
+BUILD_QEMU_CONFIG=build-configs/qemu/qemu-0.15.0-$ARCH
+BUILD_BAREBOX_CONFIG=build-configs/barebox/barebox-2011.09.0-$VENDOR/config
+BUILD_LINUX_CONFIG=build-configs/linux/linux-3.0-$VENDOR/config
+BUILD_ROOTFS_CONFIG=build-configs/rootfs-default/config
+BUILD_BUSYBOX_CONFIG=$BUILD_ROOTFS_CONFIG
+BUILD_DROPBEAR_CONFIG=$BUILD_ROOTFS_CONFIG
