@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ARCH=arm
 VENDOR=versatile
 TC_CFG=$ARCH-$VENDOR-linux-gnueabi

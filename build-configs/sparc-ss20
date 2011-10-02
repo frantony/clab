@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ARCH=sparc
 VENDOR=ss20
 TC_CFG=$ARCH-$VENDOR-linux-gnu

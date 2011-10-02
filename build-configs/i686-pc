@@ -1,5 +1,3 @@
-#!/bin/bash
-
 VENDOR=pc
 ARCH=i686
 TC_CFG=$ARCH-$VENDOR-linux-gnu
