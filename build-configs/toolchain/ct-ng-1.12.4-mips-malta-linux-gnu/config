@@ -1,0 +1,6 @@
+CT_NG=crosstool-ng-1.12.4
+CT_NG_SRC=$DIST_DIR/src/$CT_NG.tar.bz2
+CT_NG_PATCHES=" \
+"
+CT_NG_CONFIG=$(dirname $CT_NG_BUILD_CFG)/crosstool.config
+CT_NG_LIBC_CFG=""
