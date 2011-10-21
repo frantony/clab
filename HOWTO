@@ -8,7 +8,7 @@ clab support four different virtual boards (the targets):
  * MIPS Malta;
  * ARM Versatile;
  * x86 PC;
- * SPARC32 SparcStation-20. 
+ * SPARC32 SparcStation-20.
 
 For every board clab will make all nessesary development tools and
 linux, capable run gcc testsuit.
@@ -45,7 +45,7 @@ Replace "xx" & "yy" with the version number of the latest clab.
 
 Note: all commands bellow must be executed in clab-xx.yy!
 
-To use clab first time you must get some archives (source files for 
+To use clab first time you must get some archives (source files for
 crosstool-ng, qemu, busybox & dropbear). Use mk_src_dir.sh script to do it:
 
 ./mk_src_dir.sh
