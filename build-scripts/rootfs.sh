@@ -65,6 +65,14 @@ chmod 400 $ROOTFS/etc/dropbear/dropbear_rsa_host_key $ROOT_SSH/authorized_keys
 chmod 700 $ROOT_SSH
 
 #
+# Install kexec-tools
+#
+if [ "$KEXEC_TOOLS" != "" ]; then
+	run_with_check tar vfx $OUT_DIR/$KEXEC_TOOLS.$TC_CFG._install.tar.gz
+	run_with_check cp -a $KEXEC_TOOLS.$TC_CFG._install/* $ROOTFS
+fi
+
+#
 # Required files & dirs
 #
 run_with_check mkdir -p $ROOTFS/dev

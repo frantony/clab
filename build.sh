@@ -132,5 +132,9 @@ fi
 if [ "$BUILD_ROOTFS_FLAG" = "yes" ]; then
 	run_with_check build-scripts/busybox.sh $BUILD_BUSYBOX_CONFIG
 	run_with_check build-scripts/dropbear.sh $BUILD_DROPBEAR_CONFIG
+	if [ "$BUILD_KEXEC_TOOLS_CONFIG" != "" ]; then
+		run_with_check build-scripts/kexec-tools.sh $BUILD_KEXEC_TOOLS_CONFIG
+	fi
+
 	run_with_check build-scripts/rootfs.sh $BUILD_ROOTFS_CONFIG
 fi
