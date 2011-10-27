@@ -1,9 +1,9 @@
 #!/bin/sh
 
 CONFIGS=""
-#CONFIGS="$CONFIGS i686-pc"
-#CONFIGS="$CONFIGS sparc-ss20"
-#CONFIGS="$CONFIGS arm-versatile"
+CONFIGS="$CONFIGS i686-pc"
+CONFIGS="$CONFIGS sparc-ss20"
+CONFIGS="$CONFIGS arm-versatile"
 CONFIGS="$CONFIGS mips-malta"
 
 for i in $CONFIGS;
@@ -11,6 +11,12 @@ do
 	./build.sh --config build-configs/$i \
 		--build-toolchain \
 		--build-qemu \
+
+	if [ "$?" != "0" ]; then
+		exit 1
+	fi
+
+	./build.sh --config build-configs/$i \
 		--clean-out-dir \
 		--build-firmware \
 		--build-linux \
