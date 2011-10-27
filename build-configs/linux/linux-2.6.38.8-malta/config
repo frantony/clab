@@ -1,6 +1,6 @@
 LINUX=linux-2.6.38.8
 LINUX_CONFIG=$(dirname $LINUX_BUILD_CFG)/$LINUX.config
-LINUX_SRC=$DIST_DIR/src/$LINUX.tar.bz2
+LINUX_SRC=$DIST_DIR/src/$LINUX.tar.xz
 LINUX_PATCHES=" \
 "
 LINUX_ARCH=mips
