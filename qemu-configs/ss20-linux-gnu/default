@@ -37,7 +37,7 @@ QEMU_BIOS=openbios-sparc32
 QEMU_BIOS_PATH=$QEMU_BASE_DIR/out/$VENDOR
 
 KERNEL_SUFFIX=linux-2.6.38.4.$TC_CFG
-KERNEL_SUFFIX=linux-3.0.$TC_CFG
+KERNEL_SUFFIX=linux-3.1.$TC_CFG
 KERNEL_CMD="-kernel $QEMU_BASE_DIR/out/$VENDOR/zImage.$KERNEL_SUFFIX"
                                       
 INITRD_CMD="-initrd $QEMU_BASE_DIR/out/$VENDOR/$VENDOR-rootfs.$TC_CFG/squashfs.img"
