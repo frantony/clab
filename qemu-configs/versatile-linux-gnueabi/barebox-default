@@ -6,7 +6,7 @@
 LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
 . $LOCAL_PREFIX/default
 
-BAREBOX=barebox-2011.08.0-next
+BAREBOX=barebox-2011.10.0
 
 APPEND_CMD=""
 INITRD_CMD=""

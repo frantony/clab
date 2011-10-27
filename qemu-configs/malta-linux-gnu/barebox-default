@@ -8,7 +8,7 @@ LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
 
 QEMU_NET0_CMD="-net nic,vlan=0,model=rtl8139 -net tap,vlan=0,script=$QEMU_AUX/net_10.3.0.1.sh"
 
-BAREBOX=barebox-2011.08.0-next
+BAREBOX=barebox-2011.10.0
 
 KERNEL_CMD=""
 APPEND_CMD=""
