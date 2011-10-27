@@ -10,7 +10,6 @@ LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
 
 VENDOR=malta
 PREFIX=/opt/clab/$VENDOR
-PREFIX=/opt/$VENDOR
 TC_CFG=mips-$VENDOR-linux-gnu
 TC_PREFIX=$PREFIX/bin/$TC_CFG-
 
