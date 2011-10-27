@@ -5,4 +5,7 @@
 
 LOCAL_PREFIX=$(dirname $QEMU_CONFIG)
 . $LOCAL_PREFIX/barebox-default
-. $LOCAL_PREFIX/no-network
+
+QEMU_NET0_CMD=""
+QEMU_NET1_CMD=""
+QEMU_NET2_CMD=""
