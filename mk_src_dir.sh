@@ -14,6 +14,6 @@ mkdir -p $SRC_DIR
 ( cd $SRC_DIR; wget -c http://prizma.bmstu.ru/~antony/barebox/barebox-2011.08.0-next.tar.bz2 )
 
 # pc bios
-( cd $SRC_DIR; wget -c http://prizma.bmstu.ru/~antony/barebox/seabios+git20110914.tar.gz )
+( cd $SRC_DIR; wget -c http://prizma.bmstu.ru/~antony/barebox/seabios+git20111001.tar.gz )
 # sparc firmware
 ( cd $SRC_DIR; wget -c http://prizma.bmstu.ru/~antony/barebox/openbios+svn1047.tar.gz )

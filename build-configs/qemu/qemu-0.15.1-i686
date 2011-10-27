@@ -23,5 +23,5 @@ QEMU_CONFIGURE_OPTS=" \
     --target-list=i386-softmmu
 "
 
-SEABIOS=seabios+git20110914
+SEABIOS=seabios+git20111001
 SEABIOS_SRC=$(pwd)/src/$SEABIOS.tar.gz
