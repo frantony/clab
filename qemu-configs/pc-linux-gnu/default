@@ -37,7 +37,7 @@ QEMU_NET0_CMD="-net nic,vlan=0,model=pcnet -net tap,vlan=0,script=$QEMU_AUX/net_
 #QEMU_BIOS="$QEMU_BASE_DIR/out/$VENDOR/bios.bin"
 QEMU_BIOS_PATH="$QEMU_BASE_DIR/out/$VENDOR"
 
-KERNEL_SUFFIX=linux-3.0.$TC_CFG
+KERNEL_SUFFIX=linux-3.1.$TC_CFG
 KERNEL_CMD="-kernel $QEMU_BASE_DIR/out/$VENDOR/bzImage.$KERNEL_SUFFIX"
 
 INITRD_CMD="-initrd $QEMU_BASE_DIR/out/$VENDOR/$VENDOR-rootfs.$TC_CFG/squashfs.img"

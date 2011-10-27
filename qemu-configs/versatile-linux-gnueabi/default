@@ -33,7 +33,7 @@ QEMU_NET0_CMD="-net nic,vlan=0 -net tap,vlan=0,script=$QEMU_AUX/net_10.3.0.1.sh"
 # e1000 does not work!
 #QEMU_NET2_CMD="-net nic,model=e1000"
 
-KERNEL_SUFFIX=linux-3.0.$TC_CFG
+KERNEL_SUFFIX=linux-3.1.$TC_CFG
 KERNEL_CMD="-kernel $QEMU_BASE_DIR/out/$VENDOR/zImage.$KERNEL_SUFFIX"
 
 INITRD_CMD="-initrd $QEMU_BASE_DIR/out/$VENDOR/$VENDOR-rootfs.$TC_CFG/squashfs.img"
