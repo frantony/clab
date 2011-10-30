@@ -43,5 +43,5 @@ INITRD_CMD="-initrd $QEMU_BASE_DIR/out/$VENDOR/malta-rootfs.$TC_CFG/squashfs.img
 
 initarg="init=/bin/sh"
 initarg="init=/sbin/init"
-APPEND_CMD="-append \"console=ttyS0 $initarg loglevel=10\""
+APPEND_CMD="-append \"console=ttyS0 $initarg loglevel=10 ide_core.noprobe=0.0 ide_core.noprobe=0.1 ide_core.noprobe=1.0 ide_core.noprobe=1.1\""
 DISK_IMAGE=""
