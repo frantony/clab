@@ -1,4 +1,4 @@
-BUSYBOX=busybox-1.19.2
+BUSYBOX=busybox-1.19.3
 BUSYBOX_SRC=$DIST_DIR/src/$BUSYBOX.tar.bz2
 BUSYBOX_CONFIG=$(dirname $BUSYBOX_BUILD_CFG)/$BUSYBOX.config
 

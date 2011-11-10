@@ -5,7 +5,7 @@ SRC_DIR=src
 mkdir -p $SRC_DIR
 ( cd $SRC_DIR; wget -c http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.13.0.tar.bz2 )
 ( cd $SRC_DIR; wget -c http://wiki.qemu.org/download/qemu-0.15.1.tar.gz )
-( cd $SRC_DIR; wget -c http://busybox.net/downloads/busybox-1.19.2.tar.bz2 )
+( cd $SRC_DIR; wget -c http://busybox.net/downloads/busybox-1.19.3.tar.bz2 )
 ( cd $SRC_DIR; wget -c http://matt.ucc.asn.au/dropbear/releases/dropbear-0.53.1.tar.bz2 )
 ( cd $SRC_DIR; wget -c http://horms.net/projects/kexec/kexec-tools/kexec-tools-2.0.2.tar.gz )
 ( cd $SRC_DIR; wget -c http://barebox.org/download/barebox-2011.11.0.tar.bz2 )
