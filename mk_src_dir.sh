@@ -3,7 +3,7 @@
 SRC_DIR=src
 
 mkdir -p $SRC_DIR
-( cd $SRC_DIR; wget -c http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.13.0.tar.bz2 )
+( cd $SRC_DIR; wget -c http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.13.1.tar.bz2 )
 ( cd $SRC_DIR; wget -c http://wiki.qemu.org/download/qemu-0.15.1.tar.gz )
 ( cd $SRC_DIR; wget -c http://busybox.net/downloads/busybox-1.19.3.tar.bz2 )
 ( cd $SRC_DIR; wget -c http://matt.ucc.asn.au/dropbear/releases/dropbear-2011.54.tar.bz2 )
