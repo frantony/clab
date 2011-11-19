@@ -19,6 +19,10 @@ QEMU=$PREFIX/bin/qemu-system-$QEMU_SYSTEM_ARCH
 
 QEMU_START_MODE="x-terminal"
 
+#QEMU_START_MODE="custom"
+#QEMU_SERIAL="-serial stdio -serial file:/tmp/hz1 -serial file:/tmp/hz2"
+#QEMU_MONITOR="-monitor null"
+
 QEMU_MACH=malta
 QEMU_CPU=""
 QEMU_MEMSIZE=256

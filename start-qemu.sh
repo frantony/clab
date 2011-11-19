@@ -120,6 +120,9 @@ case "$QEMU_START_MODE" in
 	QEMU_MONITOR="-monitor null"
 	;;
 
+	"custom")
+	;;
+
 	*)
 	echo "Unknown QEMU_START_MODE!!!"
 	exit 1
